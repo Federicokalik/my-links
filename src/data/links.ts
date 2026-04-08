@@ -61,7 +61,7 @@ export const sections: LinkSection[] = [
       },
       {
         title: "Bulma CSS",
-        url: "https://github.com/Federicokalik/claude-skill-bulma",
+        url: "https://s.calicchia.design/bulma",
         description: "Skill per generare UI con Bulma CSS",
         iconUrl: "https://bulma.io/assets/brand/Bulma%20Icon.svg",
       },
