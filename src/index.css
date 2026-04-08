@@ -1,0 +1,214 @@
+/* Funnel Display - Local */
+@font-face {
+  font-family: 'Funnel Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/FunnelDisplay-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Funnel Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/FunnelDisplay-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Funnel Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/FunnelDisplay-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Funnel Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/FunnelDisplay-Bold.ttf') format('truetype');
+}
+
+/* Montserrat - Local */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Montserrat-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Montserrat-Bold.ttf') format('truetype');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 97%;
+    --foreground: 240 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 15%;
+
+    --primary: 22 90% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 10% 92%;
+    --secondary-foreground: 240 10% 25%;
+
+    --muted: 240 10% 90%;
+    --muted-foreground: 240 5% 45%;
+
+    --accent: 258 50% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 240 10% 88%;
+    --input: 240 10% 88%;
+    --ring: 22 90% 62%;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 240 15% 8%;
+    --foreground: 240 10% 90%;
+
+    --card: 240 12% 12%;
+    --card-foreground: 240 10% 90%;
+
+    --popover: 240 12% 12%;
+    --popover-foreground: 240 10% 90%;
+
+    --primary: 22 90% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 10% 18%;
+    --secondary-foreground: 240 10% 80%;
+
+    --muted: 240 10% 16%;
+    --muted-foreground: 240 5% 55%;
+
+    --accent: 258 50% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 240 10% 18%;
+    --input: 240 10% 18%;
+    --ring: 22 90% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer components {
+  .link-card {
+    @apply relative overflow-hidden rounded-2xl border border-border/40
+           transition-all duration-300 ease-out;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.6) 0%,
+      hsl(var(--card) / 0.35) 100%
+    );
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    box-shadow:
+      0 1px 4px hsl(0 0% 0% / 0.06),
+      inset 0 1px 0 hsl(0 0% 100% / 0.12);
+  }
+
+  .link-card:hover {
+    @apply border-primary/40;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.7) 0%,
+      hsl(var(--card) / 0.45) 100%
+    );
+    box-shadow:
+      0 16px 48px hsl(var(--primary) / 0.18),
+      0 4px 16px hsl(0 0% 0% / 0.1),
+      inset 0 1px 0 hsl(0 0% 100% / 0.18);
+    transform: translateY(-4px) scale(1.015);
+  }
+
+  .link-card:hover .link-card-icon {
+    @apply bg-white scale-110;
+  }
+
+  .link-card:hover .link-card-arrow {
+    @apply text-primary translate-x-0.5 -translate-y-0.5;
+  }
+
+  .link-card:active {
+    transform: translateY(0px) scale(0.98);
+    transition-duration: 100ms;
+  }
+
+  .link-card-icon {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .link-card-arrow {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: hsl(var(--primary) / 0.15);
+    transform: scale(0);
+    animation: ripple-effect 0.6s ease-out;
+    pointer-events: none;
+  }
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float-up {
+  animation: float-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
