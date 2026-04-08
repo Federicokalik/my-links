@@ -59,6 +59,12 @@ export const sections: LinkSection[] = [
         description: "Skill per generare UI con PDS v3/v4",
         iconUrl: "https://cdn.brandfetch.io/idOSUjsXG-/theme/dark/symbol.svg?c=1bxid64Mup7aczewSAYMX&t=1726555597451",
       },
+      {
+        title: "Bulma CSS",
+        url: "https://github.com/Federicokalik/claude-skill-bulma",
+        description: "Skill per generare UI con Bulma CSS",
+        iconUrl: "https://bulma.io/assets/brand/Bulma%20Icon.svg",
+      },
     ],
   },
   {
